@@ -12,7 +12,6 @@ with open('config.yaml', 'r') as file:
 
 BRIDGE_IP = config['bridge_ip']
 API_KEY = config['api_key']
-LIGHT_ID = config['light_id']
 
 
 def list_all_lights():
