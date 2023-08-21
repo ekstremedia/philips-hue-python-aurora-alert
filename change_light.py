@@ -2,13 +2,21 @@
 import requests
 import yaml
 from colorama import init, Fore
+import os
 
 # Initialize colorama
 init(autoreset=True)
 
+# Determine the script's directory
+script_directory = os.path.dirname(os.path.abspath(__file__))
+
+# Construct the full path to config.yaml
+config_file_path = os.path.join(script_directory, 'config.yaml')
+
 # Load configuration from config.yaml
-with open('config.yaml', 'r') as file:
+with open(config_file_path, 'r') as file:
     config = yaml.safe_load(file)
+
 
 BRIDGE_IP = config['bridge_ip']
 API_KEY = config['api_key']
