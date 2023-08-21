@@ -26,33 +26,45 @@ def fetch_aurora_value():
     if len(sys.argv) > 1:
         try:
             value = float(sys.argv[1])  # Convert the argument to a float
-            return round(value)  # Round up and return as integer
+            return round(value)  # Round to the nearest integer and return
         except ValueError:
             print(Fore.RED + "Invalid KP-Index value provided as argument. Fetching from API instead.")
 
-    # If no valid argument was provided or an exception occurred, fetch from the API
-    # Replace with your actual aurora API endpoint logic
-    # response = requests.get('YOUR_AURORA_API_ENDPOINT')
-    # value = response.json()['kp_index_value']
-    # return math.ceil(value)
-    return 1
+    # Fetch from the API
+    api_endpoint = "https://services.swpc.noaa.gov/products/noaa-planetary-k-index.json"
+    try:
+        response = requests.get(api_endpoint)
+        response.raise_for_status()  # Raise an HTTPError if an HTTP error occurred
+
+        data = response.json()
+        # Extract the KP-Index from the last entry
+        last_entry = data[-1]
+        kp_index = float(last_entry[1])  # KP-Index is the second element in each entry
+        return round(kp_index)
+    except requests.RequestException as e:
+        print(Fore.RED + f"Failed to fetch KP-Index from API: {e}. Using previous value.")
+        return previous_kp_index  # If there's an error, use the previously saved value
+
 
 def decide_hue_and_brightness(kp_index):
     if kp_index < 1:
-        return (None, None)  # Pale green with low brightness
+        return None, None  # Turn off the light
     elif kp_index == 1:
-        return (25500, 50)  # Slightly brighter green
+        return 45000, 50  # Light blue with low brightness
     elif kp_index == 2:
-        return (25500, 100)  # Slightly brighter green
+        return 25500, 100  # Pale green with medium brightness
     elif kp_index == 3:
-        return (25500, 200)  # Slightly brighter green
+        return 25500, 200  # Bright green
     elif kp_index == 4:
-        return (0, 150)  # Red with medium brightness
+        return 0, 150  # Red with medium brightness
+    elif kp_index == 5:
+        return 0, 200  # Bright red
+    elif kp_index == 6:
+        return 50000, 200  # Pinkish-red
+    elif kp_index == 7:
+        return 55000, 150  # Purple with medium brightness
     else:
-        # Progressively brighter reds for KP 5-9
-        brightness = int(
-            min(150 + (kp_index - 4) * 25, 254))  # Convert to integer and ensure brightness doesn't exceed 254
-        return (0, brightness)
+        return 55000, 254  # Deep purple with high brightness
 
 
 def blink_light(light_id):
