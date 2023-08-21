@@ -1,6 +1,12 @@
-# Philips Hue Python scripts
+# Philips Hue Aurora KP-index based lighting 💡
 
-Create and Activate a New Virtual Environment (optional, but recommended to avoid potential conflicts with system packages):
+---
+
+Make specific lights get a color and brightness code based on current KP-index
+
+Data from [NOAA Planetary Index](https://www.swpc.noaa.gov/products/planetary-k-index).
+
+## Create and Activate a New Virtual Environment (optional, but recommended to avoid potential conflicts with system packages):
 
     python3 -m venv hue-env
 
