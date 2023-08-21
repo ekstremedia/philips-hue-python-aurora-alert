@@ -58,17 +58,17 @@ def decide_hue_and_brightness(kp_index):
     elif kp_index == 1:
         return 45000, 50  # Light blue with low brightness
     elif kp_index == 2:
-        return 25500, 100  # Pale green with medium brightness
+        return 25500, 100  # Green with full brightness
     elif kp_index == 3:
-        return 25500, 200  # Bright green
+        return 10000, 200  # Orange with medium brightness
     elif kp_index == 4:
-        return 0, 150  # Red with medium brightness
+        return 3000, 200  # Red with medium brightness
     elif kp_index == 5:
         return 0, 200  # Bright red
     elif kp_index == 6:
         return 50000, 200  # Pinkish-red
     elif kp_index == 7:
-        return 55000, 150  # Purple with medium brightness
+        return 55000, 225  # Purple with medium brightness
     else:
         return 55000, 254  # Deep purple with high brightness
 
