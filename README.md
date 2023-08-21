@@ -36,7 +36,7 @@ Withing 30 seconds, push the Bridge button, then return to the script and press 
 
     python3 list_lights.py
 
-Add lights you want aurora notification for, in the `aurora_light_ids` config setting
+Add lights you want aurora notification for, in the `aurora_light_ids` [config.yaml](./example_config.yaml) setting
 
     aurora_light_ids:
     - 13
