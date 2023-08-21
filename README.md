@@ -44,9 +44,13 @@ Add lights you want aurora notification for, in the `aurora_light_ids` [config.y
 
 ### 
 
-Change lights accordinging to data from nasa.gov's kpindex
+Change lights accordinging to data from NOAA's kpindex API
 
     python3 aurora_notification.py
+
+To test with specific kp-index values, add a index as a parameter to see light change to this:
+
+    python3 aurora_notification.py 3
 
 Add this script to crontab to run every 5 minute:
 

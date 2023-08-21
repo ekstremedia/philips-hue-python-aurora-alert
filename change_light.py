@@ -37,14 +37,6 @@ def change_light_color_and_brightness(light_id, hue, brightness):
 
     response = requests.put(f'http://{BRIDGE_IP}/api/{API_KEY}/lights/{light_id}/state', json=data)
 
-    # Print the entire response for debugging
-    # print(Fore.CYAN + "Response Details:")
-    # print(Fore.CYAN + "------------------")
-    # print(Fore.YELLOW + f"URL: {response.url}")
-    # print(Fore.YELLOW + f"Status Code: {response.status_code}")
-    # print(Fore.YELLOW + f"Headers: {response.headers}")
-    # print(Fore.YELLOW + f"Content: {response.text}")
-
     response_data = response.json()
 
     # Check if response_data is a list and has at least one item
