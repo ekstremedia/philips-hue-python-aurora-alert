@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 import requests
 import yaml
-import math
+import os
 import time
 import sys
 from colorama import init, Fore
@@ -10,8 +10,14 @@ from change_light import change_light_color_and_brightness
 # Initialize colorama
 init(autoreset=True)
 
+# Determine the script's directory
+script_directory = os.path.dirname(os.path.abspath(__file__))
+
+# Construct the full path to config.yaml
+config_file_path = os.path.join(script_directory, 'config.yaml')
+
 # Load configuration from config.yaml
-with open('config.yaml', 'r') as file:
+with open(config_file_path, 'r') as file:
     config = yaml.safe_load(file)
 
 BRIDGE_IP = config['bridge_ip']
