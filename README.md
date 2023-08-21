@@ -32,3 +32,23 @@ Withing 30 seconds, push the Bridge button, then return to the script and press 
 
     python3 list_lights.py
 
+Add lights you want aurora notification for, in the `aurora_light_ids` config setting
+
+    aurora_light_ids:
+    - 13
+    - 7
+
+### 
+
+Change lights accordinging to data from nasa.gov's kpindex
+
+    python3 aurora_notification.py
+
+Add this script to crontab to run every 5 minute:
+
+    crontab -e
+
+Add this rule, remember to edit the folder and environtment names
+
+    */5 * * * * /home/pi/philips-hue-python-aurora-alert/hue-env/bin/python3 /home/pi/philips-hue-python-aurora-alert/aurora_notification.py >> /home/pi/philips-hue-python-aurora-alert/cron.log 2>&1
+

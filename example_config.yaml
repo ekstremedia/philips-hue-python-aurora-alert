@@ -1,3 +1,8 @@
 api_key:
-bridge_ip: 192.168.1.100
-light_id: 13
+bridge_ip: 192.168.1.155
+aurora_light_ids:
+- 13
+- 7
+computer_name:
+device_type:
+previous_kp_index:
