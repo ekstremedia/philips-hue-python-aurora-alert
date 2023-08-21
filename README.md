@@ -30,7 +30,7 @@ Then edit it and add your Bridge's local ip to the `bridge_ip` key, or just run 
 
     python3 bridge-authenticate.py
 
-Withing 30 seconds, push the Bridge button, then return to the script and press enter
+Within 30 seconds, push the Bridge button, then return to the script and press enter
 
 ### List all your lights
 
