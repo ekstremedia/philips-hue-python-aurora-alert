@@ -1,7 +1,5 @@
 # Philips Hue Aurora KP-index based lighting 💡
 
----
-
 Make specific lights get a color and brightness code based on current KP-index
 
 Data from [NOAA Planetary Index](https://www.swpc.noaa.gov/products/planetary-k-index).
