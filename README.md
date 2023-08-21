@@ -60,3 +60,28 @@ Add this rule, remember to edit the folder and environtment names
 
     */5 * * * * /home/pi/philips-hue-python-aurora-alert/hue-env/bin/python3 /home/pi/philips-hue-python-aurora-alert/aurora_notification.py >> /home/pi/philips-hue-python-aurora-alert/cron.log 2>&1
 
+## Colors
+
+Adjust values in [aurora_notifications.py](./aurora_notification.py) to your own desire:
+
+```
+def decide_hue_and_brightness(kp_index):
+    if kp_index < 1:
+        return None, None  # Turn off the light
+    elif kp_index == 1:
+        return 45000, 50  # Light blue with low brightness
+    elif kp_index == 2:
+        return 25500, 100  # Green with full brightness
+    elif kp_index == 3:
+        return 10000, 200  # Orange with medium brightness
+    elif kp_index == 4:
+        return 3000, 200  # Red with medium brightness
+    elif kp_index == 5:
+        return 0, 200  # Bright red
+    elif kp_index == 6:
+        return 50000, 200  # Pinkish-red
+    elif kp_index == 7:
+        return 55000, 225  # Purple with medium brightness
+    else:
+        return 55000, 254  # Deep purple with high brightness
+```
