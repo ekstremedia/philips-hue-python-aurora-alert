@@ -37,7 +37,8 @@ def fetch_aurora_value():
             print(Fore.RED + "Invalid KP-Index value provided as argument. Fetching from API instead.")
 
     # Fetch from the API
-    api_endpoint = "https://services.swpc.noaa.gov/products/noaa-planetary-k-index.json"
+    # api_endpoint = "https://services.swpc.noaa.gov/products/noaa-planetary-k-index.json" // use this for your project, i have my own below so i dont query noaa multiple times
+    api_endpoint = "https://ekstremedia.no/api/aurora/noaa-planetary-k-index"
     try:
         response = requests.get(api_endpoint)
         response.raise_for_status()  # Raise an HTTPError if an HTTP error occurred
