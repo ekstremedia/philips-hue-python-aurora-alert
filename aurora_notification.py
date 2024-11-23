@@ -38,7 +38,8 @@ def fetch_aurora_value():
 
     # Fetch from the API
     # api_endpoint = "https://services.swpc.noaa.gov/products/noaa-planetary-k-index.json" // use this for your project, i have my own below so i dont query noaa multiple times
-    api_endpoint = "https://ekstremedia.no/api/aurora/noaa-planetary-k-index"
+    # api_endpoint = "https://ekstremedia.no/api/aurora/noaa-planetary-k-index"
+    api_endpoint = "https://services.swpc.noaa.gov/products/noaa-planetary-k-index.json"
     try:
         response = requests.get(api_endpoint)
         response.raise_for_status()  # Raise an HTTPError if an HTTP error occurred
@@ -59,13 +60,13 @@ def decide_hue_and_brightness(kp_index):
     elif kp_index == 1:
         return 45000, 50  # Light blue with low brightness
     elif kp_index == 2:
-        return 25500, 100  # Green with full brightness
+        return 25500, 50  # Green with full brightness
     elif kp_index == 3:
-        return 10000, 200  # Orange with medium brightness
+        return 10000, 50  # Orange with medium brightness
     elif kp_index == 4:
-        return 3000, 200  # Red with medium brightness
+        return 3000, 50  # Red with medium brightness
     elif kp_index == 5:
-        return 0, 200  # Bright red
+        return 0, 80  # Bright red
     elif kp_index == 6:
         return 50000, 200  # Pinkish-red
     elif kp_index == 7:
@@ -96,9 +97,9 @@ if __name__ == '__main__':
         change_light_color_and_brightness(light_id, hue, brightness)
 
     # If the new KP-Index is higher than the previous one, blink the light(s)
-    if kp_index > previous_kp_index:
-        for light_id in AURORA_LIGHT_IDS:
-            blink_light(light_id)
+    #if kp_index > previous_kp_index:
+      #  for light_id in AURORA_LIGHT_IDS:
+      #      blink_light(light_id)
 
     # Update the previous KP-Index in the config.yaml file
     config['previous_kp_index'] = kp_index
